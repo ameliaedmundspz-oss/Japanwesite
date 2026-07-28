@@ -1,0 +1,22 @@
+name: Deploy to DigitalOcean App Platform
+
+on:
+  push:
+    branches:
+      - main  # or 'master' if that's your default branch
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      
+      - name: Deploy to DigitalOcean App Platform
+        uses: digitalocean/app_action/deploy@v2
+        with:
+          token: ${{ secrets.DIGITALOCEAN_ACCESS_TOKEN }}
