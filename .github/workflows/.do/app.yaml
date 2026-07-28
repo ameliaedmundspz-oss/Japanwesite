@@ -1,0 +1,14 @@
+name: your-app-name
+region: nyc
+services:
+  - name: web
+    github:
+      branch: main
+      deploy_on_push: true
+      repo: your-username/your-repo-name
+    http_port: 8080
+    instance_count: 1
+    instance_size_slug: basic-xxs
+    source_dir: /
+    build_command: npm install && npm run build
+    run_command: npm start
